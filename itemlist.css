@@ -6,6 +6,7 @@ html, body {
 .page {
 	
 }
+
 .list-form {
 	position: relative;
 	width: 200px;
@@ -57,6 +58,13 @@ html, body {
 }
 .list-form__item-details:focus {
 	border-style: solid;
+}
+
+
+.hlp-field-error {
+	border-color: #ff7f66;
+	border-style: solid;
+	box-shadow: 0px 0px 2px 0px #ff7f66;
 }
 
 

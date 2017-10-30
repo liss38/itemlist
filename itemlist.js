@@ -30,7 +30,9 @@ listForm.addEventListener('submit', function (event) {
 	if(addNewItem(title, details)) {
 		listFormItemTitle.value = '';
 		listFormItemDetails.value = '';
+		listFormItemTitle.classList.remove('hlp-field-error');
 	} else {
 		// notice help
+		listFormItemTitle.classList.add('hlp-field-error');
 	}
 });
