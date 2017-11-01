@@ -7,40 +7,19 @@ html, body {
 	
 }
 
-.list-form {
-	position: relative;
-	width: 200px;
 
-}
 
-.list-form__item-title {
+
+
+/**/
+.form {}
+.form__field {
 	width: 100%;
 	padding: 3px 6px;
 	margin: 5px 0;
-	
-	border: 1px dashed #cad8ea;
-	border-radius: 3px;
 
-	font-size: 12px;
-	color: #888;
-	
-	outline: none;
-}
-.list-form__item-title::-webkit-input-placeholder {
-	color: #ccc;
-}
-.list-form__item-title:-moz-placeholder {
-	color: #ccc;
-}
-.list-form__item-title:focus {
-	border-style: solid;
-}
+	box-sizing: border-box;
 
-.list-form__item-details {
-	width: 100%;
-	padding: 6px 6px;
-	margin: 5px 0;
-	
 	border: 1px dashed #cad8ea;
 	border-radius: 3px;
 
@@ -50,21 +29,53 @@ html, body {
 	outline: none;
 	resize: none;
 }
-.list-form__item-details::-webkit-input-placeholder {
-	color: #ccc;
-}
-.list-form__item-details:-moz-placeholder {
-	color: #ccc;
-}
-.list-form__item-details:focus {
+.form__field:hover {}
+.form__field:focus {
 	border-style: solid;
 }
-
-
-.hlp-field-error {
+.form__field::-webkit-input-placeholder {
+	color: #ccc;
+}
+.form__field:-moz-placeholder {
+	color: #ccc;
+}
+.form__field--error {
 	border-color: #ff7f66;
 	border-style: solid;
 	box-shadow: 0px 0px 2px 0px #ff7f66;
+}
+/**/
+
+
+
+
+
+
+/**/
+.list-form {
+	position: relative;
+	width: 200px;
+
+	font-size: 0;
+}
+
+.list-form__item-title {
+	display: inline-block;
+	vertical-align: top;
+
+	width: 70%;
+}
+
+.list-form__item-quantuty {
+	display: inline-block;
+	vertical-align: top;
+
+	width: 25%;
+	margin-left: 5%;
+}
+
+.list-form__item-details {
+	padding: 6px 6px;
 }
 
 
@@ -95,7 +106,16 @@ html, body {
 .list-form__submit:hover {
 	background-color: #e7505a;
 }
+/**/
 
+
+
+
+
+
+
+
+/**/
 .list {
 	width: 280px;
     margin: 22px auto;
@@ -115,6 +135,15 @@ html, body {
 	font-weight: 600;
 	font-size: 14px;
 	color: #42526E;
+}
+.list__item span {
+	display: inline-block;
+	float: right;
+    color: #ccc;
+    font-size: 12px;
+    font-family: 'Tahoma', sans-serif;
+    border: 1px dashed #f5f5f5;
+    padding: 3px 6px;
 }
 .list__item div {
 	font-weight: 100;

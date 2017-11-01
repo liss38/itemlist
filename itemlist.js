@@ -1,5 +1,6 @@
 var listForm = document.querySelector('#list-form');
 var listFormItemTitle = listForm.querySelector('#list-form-item-title');
+var listFormItemQuantity = listForm.querySelector('#list-form-item-quantity');
 var listFormItemDetails = listForm.querySelector('#list-form-item-details');
 var listFormSubmit = listForm.querySelector('#list-form-submit');
 
@@ -27,8 +28,11 @@ var listStorage = {
 		var html = '';
 
 		dataRaw.forEach(function (item) {
+			var quantity = !item.quantity ? `` : `<span>${item.quantity}</span>`;
+
 			html += `<div id="list-item-${item.id}" class="list__item">
 						<strong>${item.title}</strong>
+						${quantity}
 						<div>${item.details}</div>
 					</div>`;
 		});
@@ -54,14 +58,16 @@ var listStorage = {
 listStorage.init();
 
 
-var addNewItem = function (title, details) {
+var addNewItem = function (title, quantity, details) {
 	if(title === '') {
 		return false;
 	}
 
+	var quantity = !quantity ? `` : `<span>${quantity}</span>`;
+
 	var newItem = document.createElement('div');
 	newItem.className = 'list__item';
-	newItem.innerHTML = `<strong>${title}</strong><div>${details}</div>`;
+	newItem.innerHTML = `<strong>${title}</strong>${quantity}<div>${details}</div>`;
 	list.append(newItem);
 
 	return true;
@@ -73,17 +79,19 @@ listForm.addEventListener('submit', function (event) {
 	event.preventDefault();
 
 	var title = listFormItemTitle.value;
+	var quantity = listFormItemQuantity.value;
 	var details = listFormItemDetails.value;
 	console.log(title, details);
 
-	if(addNewItem(title, details)) {
+	if(addNewItem(title, quantity, details)) {
 		listFormItemTitle.value = '';
+		listFormItemQuantity.value = '';
 		listFormItemDetails.value = '';
-		listFormItemTitle.classList.remove('hlp-field-error');
+		listFormItemTitle.classList.remove('form__field--error');
 
-		listStorage.addItem({title: title, details: details});
+		listStorage.addItem({title: title, quantity: quantity, details: details});
 	} else {
 		// notice help
-		listFormItemTitle.classList.add('hlp-field-error');
+		listFormItemTitle.classList.add('form__field--error');
 	}
 });
