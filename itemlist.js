@@ -57,23 +57,6 @@ var listStorage = {
 
 listStorage.init();
 
-
-var addNewItem = function (title, quantity, details) {
-	if(title === '') {
-		return false;
-	}
-
-	var quantity = !quantity ? `` : `<span>${quantity}</span>`;
-
-	var newItem = document.createElement('div');
-	newItem.className = 'list__item';
-	newItem.innerHTML = `<strong>${title}</strong>${quantity}<div>${details}</div>`;
-	list.append(newItem);
-
-	return true;
-};
-
-
 // добавление
 listForm.addEventListener('submit', function (event) {	
 	event.preventDefault();
@@ -81,17 +64,24 @@ listForm.addEventListener('submit', function (event) {
 	var title = listFormItemTitle.value;
 	var quantity = listFormItemQuantity.value;
 	var details = listFormItemDetails.value;
-	console.log(title, details);
 
-	if(addNewItem(title, quantity, details)) {
+	if(title !== '') {
+		
+		// если все "OK" очищаем значения полей,
 		listFormItemTitle.value = '';
 		listFormItemQuantity.value = '';
 		listFormItemDetails.value = '';
+
+		// убираем css-классы для подсветки ошибок
 		listFormItemTitle.classList.remove('form__field--error');
 
+		// сохраняем данные в нашем сторадже
 		listStorage.addItem({title: title, quantity: quantity, details: details});
+		
+		// перерисовываем список с учетом новых данных
+		listStorage.init();
 	} else {
-		// notice help
+		// если не "OK", делаем подсветку ошибок
 		listFormItemTitle.classList.add('form__field--error');
 	}
 });
